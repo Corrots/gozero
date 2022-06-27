@@ -11,7 +11,7 @@ import (
 func HomeBannerHandler(svcCtx *svc.ServiceContext) http.HandlerFunc {
 	return func(w http.ResponseWriter, r *http.Request) {
 		l := logic.NewHomeBannerLogic(r.Context(), svcCtx)
-		resp, err := l.HomeBanner()
+		resp, err := l.HomeBanner(r)
 		if err != nil {
 			httpx.Error(w, err)
 		} else {

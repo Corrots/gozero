@@ -2,6 +2,7 @@ package logic
 
 import (
 	"context"
+	"net/http"
 
 	"github.com/Corrots/gozero/apps/app/api/internal/svc"
 	"github.com/Corrots/gozero/apps/app/api/internal/types"
@@ -23,12 +24,12 @@ func NewHomeBannerLogic(ctx context.Context, svcCtx *svc.ServiceContext) *HomeBa
 	}
 }
 
-func (l *HomeBannerLogic) HomeBanner() (*types.HomeBannerResponse, error) {
+func (l *HomeBannerLogic) HomeBanner(r *http.Request) (*types.HomeBannerResponse, error) {
 	// todo: add your logic here and delete this line
 	banner := &types.Banner{
-		ID:   100,
-		Name: "ABC",
-		URL:  "https://www.baidu.com",
+		ID:   007,
+		Name: r.UserAgent(),
+		URL:  r.URL.String(),
 	}
 	var banners []*types.Banner
 	banners = append(banners, banner)
