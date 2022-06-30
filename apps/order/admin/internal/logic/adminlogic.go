@@ -23,8 +23,9 @@ func NewAdminLogic(ctx context.Context, svcCtx *svc.ServiceContext) *AdminLogic 
 	}
 }
 
-func (l *AdminLogic) Admin(req *types.Request) (resp *types.Response, err error) {
+func (l *AdminLogic) Admin(req *types.Request) (*types.Response, error) {
 	// todo: add your logic here and delete this line
+	resp := &types.Response{Message: req.Name}
 
-	return
+	return resp, nil
 }
